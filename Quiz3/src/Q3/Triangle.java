@@ -1,4 +1,5 @@
 package Q3;
+import TriangleExceptions.TriangleException;
 
 public class Triangle extends GeometricObject{
 
@@ -6,6 +7,11 @@ public class Triangle extends GeometricObject{
 	private double side2;
 	private double side3;
 
+	public static void main(String[] args) {
+		new Triangle();
+	}
+	
+	
 	//the no-arg triangle constructor
 	public Triangle() {
 		
@@ -15,15 +21,22 @@ public class Triangle extends GeometricObject{
 	}
 	
 	//the three-arg triangle constructor
-	public Triangle(double side1, double side2, double side3) {
+	Triangle(double one, double two, double three) throws TriangleException{
 		
-		double one = 0;
-		double two = 0;
-		double three = 0;
+		double p = (side1+side2+side3)/2;
+		double area = Math.pow((p*(p-side1)*(p-side2)*(p-side3)),0.5);
 		
+		if (area <= 0) {
+			throw new TriangleException("This is an impossible triangle.");
+		}
+		
+		else {
+			
 		side1 = one;
 		side2 = two;
 		side3 = three;
+		
+		}
 	}
 
 	//Side getter Methods
